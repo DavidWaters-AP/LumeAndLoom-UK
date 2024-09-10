@@ -7,6 +7,6 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/product/**': { swr: true, revalidate: 60 }, // Revalidate after 60 seconds
+    '/product/**': { ssr: true, revalidate: 60 }, // Revalidate after 60 seconds
   },
 });
