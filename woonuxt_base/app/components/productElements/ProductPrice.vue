@@ -1,10 +1,16 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
 interface ProductPriceProps {
   regularPrice?: string | null;
   salePrice?: string | null;
 }
 
-const { regularPrice, salePrice } = defineProps<ProductPriceProps>();
+const props = defineProps<ProductPriceProps>();
+
+// Use computed to ensure reactivity
+const regularPrice = computed(() => props.regularPrice);
+const salePrice = computed(() => props.salePrice);
 </script>
 
 <template>
