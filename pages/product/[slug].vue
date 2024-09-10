@@ -199,7 +199,6 @@
         <div class="lg:max-w-md xl:max-w-lg md:py-2 w-full">
           <div class="flex justify-between mb-4">
             <div class="flex-1">
-              <div>{{ type }}</div>
               <h1
                 class="flex flex-wrap items-center gap-2 mb-2 text-2xl font-sesmibold"
               >

@@ -33,12 +33,12 @@ query getProduct($slug: ID!) {
     ...ProductCategories
     ...Terms
     ...SimpleProduct
-    ...VariableProductWithVariants
+    ...VariableProduct
     ...ExternalProduct
     related(first: 5) {
       nodes {
         ...SimpleProduct
-        ...VariableProductWithVariants
+        ...VariableProduct
         ...ExternalProduct
       }
     }
@@ -72,23 +72,6 @@ fragment Comment on Comment {
       name
       avatar {
         url
-      }
-    }
-  }
-}
-
-fragment VariableProductWithVariants on VariableProduct {
-  variations {
-    nodes {
-      id
-      name
-      sku
-      price
-      attributes {
-        nodes {
-          name
-          value
-        }
       }
     }
   }
