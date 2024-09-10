@@ -84,7 +84,6 @@ const disabledAddToCart = computed(() => {
       <Breadcrumb :product class="mb-6" v-if="storeSettings.showBreadcrumbOnSingleProduct" />
 
       <div class="flex flex-col gap-10 md:flex-row md:justify-between lg:gap-24">
-        <h1>this is a test to see if its force change</h1>
         <ProductImageGallery
           v-if="product.image"
           class="relative flex-1"
