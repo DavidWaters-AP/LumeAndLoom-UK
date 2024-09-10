@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import { StockStatusEnum, ProductTypesEnum, type AddToCartInput } from '#woo';
+import { watch } from 'vue';
 
 const route = useRoute();
 const { storeSettings } = useAppConfig();
 const { arraysEqual, formatArray, checkForVariationTypeOfAny } = useHelpers();
 const { addToCart, isUpdatingCart } = useCart();
 const { t } = useI18n();
-const slug = route.params.slug as string;
+const slug = ref(route.params.slug as string); // Make slug reactive
 
-const { data } = await useAsyncGql('getProduct', { slug });
+const { data } = await useAsyncGql('getProduct', { slug: slug.value });
 if (!data.value?.product) {
   throw showError({ statusCode: 404, statusMessage: t('messages.shop.productNotFound') });
 }
@@ -36,41 +37,69 @@ const mergeLiveStockStatus = (payload: Product): void => {
   });
 };
 
-onMounted(async () => {
-  try {
-    const { product } = await GqlGetStockStatus({ slug });
-    if (product) mergeLiveStockStatus(product as Product);
-  } catch (error: any) {
-    const errorMessage = error?.gqlErrors?.[0].message;
-    if (errorMessage) console.error(errorMessage);
-  }
-});
-
+// Update the buttons based on selected variations
 const updateSelectedVariations = (variations: VariationAttribute[]): void => {
   if (!product.value.variations) return;
 
   attrValues.value = variations.map((el) => ({ attributeName: el.name, attributeValue: el.value }));
   const clonedVariations = JSON.parse(JSON.stringify(variations));
   const getActiveVariation = product.value.variations?.nodes.filter((variation: any) => {
-    // If there is any variation of type ANY set the value to ''
     if (variation.attributes) {
-      // Set the value of the variation of type ANY to ''
       indexOfTypeAny.value.forEach((index) => (clonedVariations[index].value = ''));
-
       return arraysEqual(formatArray(variation.attributes.nodes), formatArray(clonedVariations));
     }
   });
 
-  if (getActiveVariation[0]) activeVariation.value = getActiveVariation[0];
+  if (getActiveVariation[0]) {
+    activeVariation.value = getActiveVariation[0];
+  } else {
+    activeVariation.value = null;
+  }
   selectProductInput.value.variationId = activeVariation.value?.databaseId ?? null;
   selectProductInput.value.variation = activeVariation.value ? attrValues.value : null;
   variation.value = variations;
 };
 
+// Function to select default attributes when loading or navigating to a new product page
+const selectDefaultAttributes = () => {
+  if (product.value.defaultAttributes?.nodes) {
+    updateSelectedVariations(product.value.defaultAttributes.nodes);
+  }
+};
+
+// Watch for route changes to refresh product and variant data
+watch(
+  route,
+  async (newRoute) => {
+    slug.value = newRoute.params.slug as string;
+    const { data } = await useAsyncGql('getProduct', { slug: slug.value });
+    product.value = data?.value?.product;
+    activeVariation.value = null; // Reset active variation
+    variation.value = []; // Clear selected variations
+    if (product.value) {
+      selectDefaultAttributes(); // Auto-select default attributes when navigating
+    }
+  },
+  { immediate: true },
+); // Run on initial load as well
+
+// Ensure the variant buttons are selected based on activeVariation
+watch(
+  activeVariation,
+  (newVariation) => {
+    if (newVariation) {
+      const selectedAttributes = newVariation.attributes?.nodes || [];
+      updateSelectedVariations(selectedAttributes);
+    }
+  },
+  { immediate: true },
+);
+
 const stockStatus = computed(() => {
   if (isVariableProduct.value) return activeVariation.value?.stockStatus || StockStatusEnum.OUT_OF_STOCK;
   return type.value?.stockStatus || StockStatusEnum.OUT_OF_STOCK;
 });
+
 const disabledAddToCart = computed(() => {
   if (isSimpleProduct.value) return !type.value || stockStatus.value === StockStatusEnum.OUT_OF_STOCK || isUpdatingCart.value;
   return !type.value || stockStatus.value === StockStatusEnum.OUT_OF_STOCK || !activeVariation.value || isUpdatingCart.value;
