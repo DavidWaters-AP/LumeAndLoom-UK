@@ -170,10 +170,6 @@
 
 <template>
   <main class="container relative py-6 xl:max-w-7xl">
-    <div class="bg-grey-500">
-      <div>{{ selectProductInput }}</div>
-    </div>
-
     <div v-if="product">
       <SEOHead :info="product" />
       <Breadcrumb
@@ -234,10 +230,10 @@
             </div>
             <div
               class="flex items-center gap-2"
-              v-if="storeSettings.showSKU && product.sku"
+              v-if="storeSettings.showSKU && type.sku"
             >
               <span class="text-gray-400">{{ $t("messages.shop.sku") }}: </span>
-              <span>{{ product.sku || "N/A" }}</span>
+              <span>{{ type.sku || "N/A" }}</span>
             </div>
           </div>
 
