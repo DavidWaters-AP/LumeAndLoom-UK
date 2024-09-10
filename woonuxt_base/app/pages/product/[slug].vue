@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { StockStatusEnum, ProductTypesEnum, type AddToCartInput } from '#woo';
-import { watch, nextTick } from 'vue';
+import { watch } from 'vue';
 
 const route = useRoute();
 const { storeSettings } = useAppConfig();
@@ -58,11 +58,6 @@ const updateSelectedVariations = (variations: VariationAttribute[]): void => {
   selectProductInput.value.variationId = activeVariation.value?.databaseId ?? null;
   selectProductInput.value.variation = activeVariation.value ? attrValues.value : null;
   variation.value = variations;
-
-  // Wait until the next DOM update to ensure the UI reflects the new state
-  nextTick(() => {
-    setSelectedVariantButtons();
-  });
 };
 
 // Function to select default attributes when loading or navigating to a new product page
@@ -70,17 +65,6 @@ const selectDefaultAttributes = () => {
   if (product.value.defaultAttributes?.nodes) {
     updateSelectedVariations(product.value.defaultAttributes.nodes);
   }
-};
-
-// Ensure variant buttons are properly selected based on activeVariation
-const setSelectedVariantButtons = () => {
-  const selectedAttrs = activeVariation.value?.attributes.nodes || [];
-  selectedAttrs.forEach((attr) => {
-    const button = document.querySelector(`[data-attribute-name="${attr.name}"][data-attribute-value="${attr.value}"]`);
-    if (button) {
-      button.classList.add('active'); // Add the "active" class to the button
-    }
-  });
 };
 
 // Watch for route changes to refresh product and variant data
