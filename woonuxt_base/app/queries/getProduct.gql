@@ -81,6 +81,7 @@ fragment VariableProductWithVariants on VariableProduct {
   variations {
     nodes {
       id
+      name
       sku
       price
       attributes {
