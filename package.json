@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@iconify-json/ion": "^1.2.0",
+    "@nuxt/fonts": "^0.8.0",
     "@nuxt/icon": "^1.5.1",
     "@nuxt/image": "1.8.0",
     "@nuxtjs/i18n": "^8.5.2",

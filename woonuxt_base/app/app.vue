@@ -50,6 +50,7 @@ html,
 body {
   @apply text-gray-900;
   scroll-behavior: smooth;
+  font-family: DM Sans;
 }
 
 img {

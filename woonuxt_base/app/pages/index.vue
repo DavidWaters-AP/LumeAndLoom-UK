@@ -22,6 +22,14 @@ useSeoMeta({
   <main>
     <HeroBanner />
 
+    <section class="container my-16" v-if="popularProducts">
+      <div class="flex items-end justify-between">
+        <h2 class="text-lg font-semibold md:text-2xl">{{ $t('messages.shop.popularProducts') }}</h2>
+        <NuxtLink class="text-primary" to="/products">{{ $t('messages.general.viewAll') }}</NuxtLink>
+      </div>
+      <ProductRow :products="popularProducts" class="grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mt-8" />
+    </section>
+
     <div class="container flex flex-wrap items-center justify-center my-16 text-center gap-x-8 gap-y-4 brand lg:justify-between">
       <img src="/images/logoipsum-211.svg" alt="Brand 1" width="132" height="35" />
       <img src="/images/logoipsum-221.svg" alt="Brand 2" width="119" height="30" />
@@ -70,14 +78,6 @@ useSeoMeta({
           <p class="text-sm">24/7 Online support</p>
         </div>
       </div>
-    </section>
-
-    <section class="container my-16" v-if="popularProducts">
-      <div class="flex items-end justify-between">
-        <h2 class="text-lg font-semibold md:text-2xl">{{ $t('messages.shop.popularProducts') }}</h2>
-        <NuxtLink class="text-primary" to="/products">{{ $t('messages.general.viewAll') }}</NuxtLink>
-      </div>
-      <ProductRow :products="popularProducts" class="grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mt-8" />
     </section>
   </main>
 </template>
