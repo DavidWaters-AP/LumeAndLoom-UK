@@ -1,9 +1,28 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
 const { isShowingSearch } = useSearching();
+
+// Reactive state to track whether the page is scrolled
+const isScrolled = ref(false);
+
+// Function to check scroll position
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 0;
+};
+
+// Add event listener when the component is mounted
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+});
+
+// Remove event listener when the component is unmounted
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <template>
-  <header class="sticky top-0 z-40 bg-white bg-opacity-90 backdrop-blur-md">
+  <header :class="['sticky top-0 z-40 bg-white bg-opacity-40 backdrop-blur-md transition-shadow', isScrolled ? 'shadow-sm' : '']">
     <div class="container flex items-center justify-between py-4">
       <div class="flex items-center">
         <MenuTrigger class="lg:hidden" />
