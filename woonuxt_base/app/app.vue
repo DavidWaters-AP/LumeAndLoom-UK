@@ -48,7 +48,7 @@ useHead({
 <style lang="postcss">
 html,
 body {
-  @apply text-gray-900;
+  @apply text-primary-lumeblack;
   scroll-behavior: smooth;
   font-family: DM Sans;
 }

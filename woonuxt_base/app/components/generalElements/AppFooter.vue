@@ -4,11 +4,11 @@ const { wishlistLink } = useAuth();
 </script>
 
 <template>
-  <footer class="bg-gray-100 order-last">
+  <footer class="bg-primary-lumeblack text-white order-last">
     <div class="container flex flex-wrap justify-between gap-12 my-24 md:gap-24">
       <div class="mr-auto">
-        <Logo />
-        <WebsiteShortDescription />
+        <Logo class="invert" />
+        <WebsiteShortDescription class="text-white text-lg font-thin" />
       </div>
       <div class="w-3/7 lg:w-auto">
         <div class="mb-1 font-semibold">Information</div>

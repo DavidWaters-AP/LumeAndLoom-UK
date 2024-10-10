@@ -19,7 +19,9 @@
         <div class="max-w-sm mb-8 text-md font-light lg:max-w-md text-balance">
           <p>Discover our latest finds.</p>
         </div>
-        <NuxtLink class="px-6 py-3 font-bold text-white bg-gray-800 hover:bg-primary-lumebrown transition-colors ease-in-out duration-200" to="/products"
+        <NuxtLink
+          class="px-6 py-3 font-bold text-white bg-primary-lumeblack hover:bg-primary-lumebrown transition-colors ease-in-out duration-200"
+          to="/products"
           >Shop now</NuxtLink
         >
       </div>

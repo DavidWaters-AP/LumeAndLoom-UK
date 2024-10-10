@@ -13,7 +13,8 @@ export default <Partial<Config>>{
           light: '#AE7DDD',
           DEFAULT: process.env.PRIMARY_COLOR || '#7F54B2',
           dark: '#754fa3',
-          lumebrown: '#997c5c'
+          lumebrown: '#997c5c',
+          lumeblack:'#242424'
         },
       },
       aspectRatio: {

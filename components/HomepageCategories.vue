@@ -1,6 +1,8 @@
 <template>
   <section class="container my-32">
-    <div class="flex items-end justify-between">
+    <div
+      class="flex flex-col gap-4 md:gap-0 md:flex-row md:items-end md:justify-between"
+    >
       <div class="flex flex-col">
         <h2 class="text-lg tracking-tighter md:text-2xl mb-4">
           {{ $t("messages.shop.shopByCategory") }}
@@ -16,7 +18,7 @@
       }}</NuxtLink>
     </div>
     <div
-      class="grid justify-center grid-cols-2 gap-8 mt-8 md:grid-cols-3 lg:grid-cols-5"
+      class="grid justify-center grid-cols-2 gap-4 md:gap-8 mt-8 md:grid-cols-3 lg:grid-cols-5"
     >
       <HomepageCategoriesCard
         class="col-span-1 md:col-span-2 lg:col-span-3"
