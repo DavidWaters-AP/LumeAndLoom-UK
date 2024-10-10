@@ -24,42 +24,42 @@
         class="col-span-1 md:col-span-2 lg:col-span-3"
         name="Accessories"
         decorationNumber="01"
-        imageSrc="/images/categories/accessories.webp"
+        imageSrc="/images/categories/acessories_new_2.webp"
         link="/product-category/accessories"
       />
       <HomepageCategoriesCard
         class="col-span-1 md:col-span-1 lg:col-span-2"
         name="Pendant Lamps"
         decorationNumber="02"
-        imageSrc="/images/categories/pendant-lamp.webp"
+        imageSrc="/images/categories/pendant-lights_new.webp"
         link="/product-category/pendant-lamps"
       />
       <HomepageCategoriesCard
         class="col-span-1 md:col-span-1 lg:col-span-2"
         name="Table Lamps"
         decorationNumber="03"
-        imageSrc="/images/categories/accessories.webp"
+        imageSrc="/images/categories/table-lamp_new.webp"
         link="/product-category/table-lamps"
       />
       <HomepageCategoriesCard
         class="col-span-1 md:col-span-2 lg:col-span-3"
         name="Floor Lamps"
         decorationNumber="04"
-        imageSrc="/images/categories/accessories.webp"
+        imageSrc="/images/categories/floor-lamp_new.webp"
         link="/product-category/floor-lamps"
       />
       <HomepageCategoriesCard
         class="col-span-1 md:col-span-2 lg:col-span-3"
         name="Furniture"
         decorationNumber="05"
-        imageSrc="/images/categories/accessories.webp"
+        imageSrc="/images/categories/furniture.webp"
         link="/product-category/furniture"
       />
       <HomepageCategoriesCard
         class="col-span-1 md:col-span-1 lg:col-span-2"
         name="All"
         decorationNumber="06"
-        imageSrc="/images/categories/accessories.webp"
+        imageSrc="/images/categories/acessories_new.webp"
         link="/products"
       />
     </div>

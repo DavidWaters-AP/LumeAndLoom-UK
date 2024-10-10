@@ -4,7 +4,7 @@
     class="bg-gray-100 hover:bg-gray-200 relative overflow-hidden"
   >
     <NuxtImg
-      class="w-full max-h-96 object-contain relative hover:scale-125 transition-transform ease-in-out duration-500 hover:drop-shadow-xl"
+      class="w-full max-h-96 object-cover object-right relative hover:scale-105 transition-transform ease-in-out duration-500 hover:drop-shadow-xl"
       :src="imageSrc"
     />
     <div
