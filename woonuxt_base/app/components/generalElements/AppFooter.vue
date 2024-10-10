@@ -4,7 +4,7 @@ const { wishlistLink } = useAuth();
 </script>
 
 <template>
-  <footer class="bg-gray-50 order-last">
+  <footer class="bg-gray-100 order-last">
     <div class="container flex flex-wrap justify-between gap-12 my-24 md:gap-24">
       <div class="mr-auto">
         <Logo />
