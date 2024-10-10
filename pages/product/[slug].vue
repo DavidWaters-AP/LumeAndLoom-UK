@@ -169,7 +169,7 @@
 </script>
 
 <template>
-  <main class="container relative py-6 xl:max-w-7xl">
+  <main class="container relative py-6">
     <div v-if="product">
       <SEOHead :info="product" />
       <Breadcrumb

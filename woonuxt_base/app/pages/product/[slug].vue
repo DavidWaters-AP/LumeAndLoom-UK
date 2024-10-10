@@ -82,7 +82,6 @@ const disabledAddToCart = computed(() => {
     <div v-if="product">
       <SEOHead :info="product" />
       <Breadcrumb :product class="mb-6" v-if="storeSettings.showBreadcrumbOnSingleProduct" />
-
       <div class="flex flex-col gap-10 md:flex-row md:justify-between lg:gap-24">
         <ProductImageGallery
           v-if="product.image"
@@ -103,6 +102,7 @@ const disabledAddToCart = computed(() => {
               <StarRating :rating="product.averageRating || 0" :count="product.reviewCount || 0" v-if="storeSettings.showReviews" />
             </div>
             <ProductPrice class="text-xl" :sale-price="type.salePrice" :regular-price="type.regularPrice" />
+            <p></p>
           </div>
 
           <div class="grid gap-2 my-8 text-sm empty:hidden">

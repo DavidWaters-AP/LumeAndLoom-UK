@@ -21,7 +21,6 @@ useSeoMeta({
 <template>
   <main>
     <HeroBanner />
-
     <section class="container my-16" v-if="popularProducts">
       <div class="flex items-end justify-between">
         <h2 class="text-lg font-semibold md:text-2xl">{{ $t('messages.shop.popularProducts') }}</h2>

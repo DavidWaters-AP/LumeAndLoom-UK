@@ -1,12 +1,19 @@
 <script setup lang="ts">
-const { setProducts, updateProductList } = useProducts();
+const allProducts = ref<Product[]>([]);
+
+const { setProducts, updateProductList, products } = useProducts();
 const route = useRoute();
 const { storeSettings } = useAppConfig();
 const { isQueryEmpty } = useHelpers();
 
-const { data } = await useAsyncGql('getProducts');
-const allProducts = (data.value?.products?.nodes || []) as Product[];
-setProducts(allProducts);
+// Fetch products asynchronously
+const { data, error } = await useAsyncGql('getProducts');
+if (error.value) {
+  console.error('Error fetching products:', error.value);
+} else {
+  allProducts.value = data.value?.products?.nodes || [];
+  setProducts(allProducts.value);
+}
 
 onMounted(() => {
   if (!isQueryEmpty.value) updateProductList();
@@ -21,7 +28,7 @@ watch(
 );
 
 useHead({
-  title: `Products`,
+  title: 'Products',
   meta: [{ hid: 'description', name: 'description', content: 'Products' }],
 });
 </script>
@@ -39,5 +46,5 @@ useHead({
       <ProductGrid />
     </div>
   </div>
-  <NoProductsFound v-else>Could not fetch products from your store. Please check your configuration.</NoProductsFound>
+  <NoProductsFound v-else> Could not fetch products from your store. Please check your configuration. </NoProductsFound>
 </template>
