@@ -25,7 +25,7 @@
     <NewsletterSignup />
     <section class="container mt-24 mb-48" v-if="popularProducts">
       <div class="flex items-end justify-between">
-        <h2 class="text-lg font-semibold md:text-2xl">
+        <h2 class="text-lg tracking-tighter md:text-2xl mb-4">
           {{ $t("messages.shop.popularProducts") }}
         </h2>
         <NuxtLink class="text-primary" to="/products">{{
