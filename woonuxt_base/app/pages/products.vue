@@ -27,7 +27,7 @@ useHead({
 </script>
 
 <template>
-  <div class="container flex items-start gap-16" v-if="allProducts.length">
+  <div class="container flex items-start gap-16">
     <Filters v-if="storeSettings.showFilters" />
 
     <div class="w-full">
@@ -39,5 +39,4 @@ useHead({
       <ProductGrid />
     </div>
   </div>
-  <NoProductsFound v-else>Could not fetch products from your store. Please check your configuration.</NoProductsFound>
 </template>
