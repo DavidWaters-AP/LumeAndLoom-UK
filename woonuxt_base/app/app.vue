@@ -37,12 +37,12 @@ useHead({
         t['claspo'] = t['claspo'] || f;
       }(window, document, 'script', '1D6A2788D789461A9E88FB587A95FB8F');`,
       type: 'text/javascript',
-      body: true,
+      tagPosition: 'bodyOpen',
     },
     {
       innerHTML: `claspo('init');`,
       type: 'text/javascript',
-      body: true,
+      tagPosition: 'bodyOpen',
     },
   ],
 });
